@@ -25,15 +25,7 @@ This project uses *Python* and *speech recognition* to help you interact with yo
 - pyttsx3 (Text-to-speech)
 - datetime
 - os, json, re (for file handling, history, and more)
-
----
-
-## 📁 Project Structure
-
-📁 Voice_Assistant/ │ ├── assistant.py             # Main voice assistant logic ├── history.json             # Stores command and response history ├── file_search.py           # For finding and reading files ├── requirements.txt         # Required libraries └── README.md                # Project info
-
----
-
+- 
 ## 📚 How to Use
 
 1. 🔽 Clone the repository:
