@@ -1,54 +1,70 @@
-# Tung Tung Tung sahur - Voice Command Assistant
+🧠 AI Voice Assistant 🤖🗣
 
- Tung Tung Tung sahur is a Python-based voice assistant that can recognize voice commands and perform various tasks such as searching Wikipedia, opening websites, playing music, sending emails, and more.
+Welcome to *AI Voice Assistant* – your smart desktop companion!  
+This project uses *Python* and *speech recognition* to help you interact with your computer using just your *voice*!
 
-## Features
-- Voice recognition using `speech_recognition`
-- Text-to-speech conversion using `pyttsx3`
-- Wikipedia search functionality
-- Open frequently used websites (YouTube, Google, Stack Overflow, etc.)
-- Play music from a predefined directory
-- Report the current time
-- Send emails using SMTP
-- Execute custom scripts
+## 🚀 Features
 
-## Installation
+✨ Here’s what your Voice Assistant can do:
 
-### Prerequisites
-Ensure you have Python installed on your system. You can download it from [python.org](https://www.python.org/).
+- 🎙 *Voice Interaction* – Speak naturally to give commands.
+- 🔍 *Search Files* – Ask to find any file on your system quickly.
+- 📂 *Read Text Files* – It can read aloud any .txt file you ask for.
+- 🕓 *Chat History* – Keeps a log of your voice commands and replies.
+- ⏰ *Tell Time & Date* – Ask for current time or date.
+- 🌐 *Open Websites* – Instantly open websites via voice (e.g., Google, YouTube).
+- 📧 *Send Emails* – Dictate and send emails right from your voice.
+- 🧠 *Expandable AI* – Built to grow into a smarter personal assistant with AI integrations.
 
-### Install Required Dependencies
-Run the following command to install the required Python libraries:
-```bash
-pip install pyttsx3 speechRecognition wikipedia
-```
+---
 
-## Usage
-1. Run the script:
-```bash
-python ai.py
-```
-2. The assistant will greet you and wait for your command.
-3. Speak out commands such as:
-   - "Search Wikipedia for Python programming"
-   - "Open YouTube"
-   - "Play music"
-   - "Tell me the time"
-   - "Send an email to [recipient]"
-   - "Exit" to stop the assistant
+## 🛠 Tech Stack
 
-## Email Functionality
-To use the email feature, update the `sendEmail` function with your email credentials. It is recommended to use an app password for security instead of your actual password.
+- *Python*
+- speech_recognition
+- pyttsx3 (Text-to-speech)
+- datetime
+- os, json, re (for file handling, history, and more)
 
-## Future Enhancements
-- Add more voice commands
-- Integrate AI-based responses
-- Improve error handling
-- Support multiple languages
+---
 
-## License
-This project is licensed under the MIT License.
+## 📁 Project Structure
 
-## Disclaimer
-Use this software at your own risk. Do not store sensitive credentials directly in the script.
+📁 Voice_Assistant/ │ ├── assistant.py             # Main voice assistant logic ├── history.json             # Stores command and response history ├── file_search.py           # For finding and reading files ├── requirements.txt         # Required libraries └── README.md                # Project info
 
+---
+
+## 📚 How to Use
+
+1. 🔽 Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/Voice_Assistant.git
+   cd Voice_Assistant
+   
+2. 🧰 Install dependencies:
+pip install -r requirements.txt
+
+3. ▶ Run the Assistant:
+python assistant.py
+
+4. 🗣 Start talking! Try commands like:
+"Find file named notes.txt"
+"Read tasks.txt"
+"Show me my command history"
+"What’s the time?"
+🧠 Future Plans
+🔗 Integrate ChatGPT for smarter responses
+💬 Add conversational memory
+🎨 GUI version using Tkinter or PyQt
+📱 Android version using Kivy
+
+🤝 Contributing
+Feel free to fork this repo and add your own features!
+Pull requests are welcome 💡
+
+📜 License
+MIT License - Free to use and modify.
+
+💬 Let's Connect!
+Made with ❤ by Varun Thakur
+Drop a ⭐ if you find it helpful!
