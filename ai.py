@@ -1,19 +1,21 @@
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import pyttsx3 #pip install pyttsx3
-import speech_recognition as sr #pip install speechRecognition
+import pyttsx3
+import speech_recognition as sr
 import datetime
-import wikipedia #pip install wikipedia
+import wikipedia
 import webbrowser
 import os
 import sys
 import smtplib
+import json
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 # print(voices[1].id)
 engine.setProperty('voice', voices[0].id)
 
+command_history = []
 
 def speak(audio):
     engine.say(audio)
@@ -56,7 +58,7 @@ def sendEmail(to, subject, content):
     try:
         # Sender's email credentials (Use an app password if 2-factor authentication is enabled)
         sender_email = 'varun071105@gmail.com'
-        sender_password = 'Varun@85'  # Use an app password instead of the actual email password
+        sender_password = 'Password'  # Use an app password instead of the actual email password
 
         # Create a multipart message and set headers
         message = MIMEMultipart()
@@ -81,6 +83,32 @@ def sendEmail(to, subject, content):
     except Exception as e:
         print(f"Error: {str(e)}")
         speak("Sorry, I wasn't able to send the email.")
+        
+def search_files(keyword, search_dir='C:/'):
+    matches = []
+    for root, dirs, files in os.walk(search_dir):
+        for file in files:
+            if keyword.lower() in file.lower():
+                matches.append(os.path.join(root, file))
+    return matches
+
+def read_text_file(file_path):
+    try:
+        if not os.path.exists(file_path):
+            raise FileNotFoundError
+        if not file_path.endswith(('.txt', '.md')):
+            raise ValueError("Unsupported file format")
+            
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            speak("Reading the file now")
+            speak(content)
+    except FileNotFoundError:
+        speak("File not found")
+    except UnicodeDecodeError:
+        speak("Could not read the file due to encoding issues")
+    except Exception as e:
+        speak(f"Error reading file: {str(e)}")
 
 def exitTung():
     speak("Okay, shutting down. Have a nice day Varun Sir!")
@@ -162,7 +190,29 @@ if __name__ == "__main__":
                  sendEmail(to, subject, content)
              except Exception as e:
                  speak(f"Error: {e}")
-                
+                 
+        elif 'search file' in query:
+            speak("What keyword should I search for?")
+            keyword = takeCommand()
+            results = search_files(keyword)
+            if results:
+                speak(f"Found {len(results)} files")
+                for r in results[:5]:
+                    print(r)
+            else:
+                speak("No matching files found")
+
+         # Read file block
+        elif 'read file' in query:
+            speak("Please say the full file path")
+            path = takeCommand()
+            read_text_file(path)
+
+         # Command history block
+        elif 'show history' in query:
+            speak("Here is your recent command history")
+            for cmd in command_history[-5:]:
+                print(cmd)     
+                 
         elif 'exit' in query or 'quit' in query or 'stop' in query:
             exitTung()
-            
